@@ -5,6 +5,7 @@ const cors = require('cors');
 // const multer = require('multer');
 // const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const cloudinary = require('./cloudinaryConfig');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -13,7 +14,7 @@ app.use(express.json({ limit: '50mb' }));      // for JSON
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 
-mongoose.connect('mongodb+srv://amlan:87upDoa7i2QviZG@clarityux.yqp6pxw.mongodb.net/'); // replace with your URI
+mongoose.connect(process.env.MONGO_URL); // replace with your URI
 
 // Save data and return ID
 app.post('/api/save', async (req, res) => {
