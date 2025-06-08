@@ -50,5 +50,9 @@ app.get('/api/get/:id', async (req, res) => {
   if (!data) return res.status(404).json({ error: 'Not found' });
   res.json(data);
 });
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
